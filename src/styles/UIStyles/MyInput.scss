@@ -1,0 +1,33 @@
+.form {
+  width: 716px;
+
+  &__custom-input {
+    z-index: 9999;
+
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto 0;
+      margin-right: 35px;
+      width: 29px;
+      height: 29px;
+      background: url("../../img/inputIcon.png") no-repeat;
+      background-size: cover;
+    }
+    input {
+      width: 100%;
+      background-color: var(--bg-color);
+      border: var(--border);
+      border-radius: 50px;
+      width: 100%;
+      height: 64px;
+      padding: 30px;
+      color: white;
+      outline: none;
+    }
+  }
+}

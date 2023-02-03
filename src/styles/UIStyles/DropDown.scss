@@ -1,0 +1,54 @@
+// arrow
+.arrow {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid rgb(255, 255, 255);
+  display: inline-block;
+  margin-bottom: 3px;
+  margin-left: 5px;
+}
+
+.arrow-hover:hover .arrow {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid rgb(255, 255, 255);
+  transition: all 0.3s ease;
+}
+// select
+.dws-menu {
+  width: 100%;
+  min-width: 92px;
+}
+.dws-menu * {
+  padding: 0px;
+  z-index: 10;
+}
+.dws-menu ul,
+.dws-menu ol {
+  list-style: none;
+}
+.dws-menu > ul {
+  display: flex;
+  justify-content: center;
+}
+/*sub menu*/
+.dws-menu li ul {
+  position: absolute;
+  min-width: 150px;
+  background: rgba(#191a1b, 0.9);
+  color: rgb(255, 255, 255);
+  display: none;
+  padding: 0px 15px 0px 5px;
+  border: 2px solid rgb(91, 91, 91);
+}
+
+.dws-menu li > ul li {
+  padding-top: 5px;
+}
+.dws-menu li:hover > ul {
+  display: block;
+}
+.dws-menu ul ul li a:hover {
+  color: var(--hover-color);
+}

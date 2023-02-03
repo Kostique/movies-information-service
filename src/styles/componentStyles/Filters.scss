@@ -1,0 +1,18 @@
+.filters {
+  width: 400px;
+
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  gap: 20px;
+  position: sticky;
+  top: 0;
+  &__reset {
+    color: #a4a4a4;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  &__caption {
+    padding-bottom: 10px;
+  }
+}
