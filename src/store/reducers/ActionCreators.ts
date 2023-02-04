@@ -17,6 +17,7 @@ import {
   listFetchingSuccess,
   listFetchingError,
 } from "./ListSlice";
+import { collectionFetching, collectionFetchingSuccess, collectionFetchingError } from "./CollectionSlice";
 
 interface queryParams {
   year: string;
@@ -92,5 +93,21 @@ export const fetchItem = (id: string) => async (dispatch: AppDispatch) => {
     dispatch(itemFetchingSuccess(response.data));
   } catch (e: any) {
     dispatch(itemFetchingError(e));
+  }
+};
+export const fetchCollection = () => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(collectionFetching());
+    const response = await axios.get<IMovieItem>(
+      `https://api.kinopoisk.dev/movie?field=year&search=2023&sortField=createdAt&sortType=-1&limit=5`,
+      {
+        params: {
+          token: token,
+        },
+      }
+    );
+    dispatch(collectionFetchingSuccess(response.data));
+  } catch (e: any) {
+    dispatch(collectionFetchingError(e));
   }
 };

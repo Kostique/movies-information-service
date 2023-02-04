@@ -12,7 +12,7 @@ export const ActorList = ({ actors }: IActor) => {
       <div className="actor-list">
         {actors
           .slice(0, 5)
-          .filter((item) => item.name && item.enProfession == "actor")
+          .filter((item) => item.name)
           .map((item, i) => (
             <div key={i} className="actor-item">
               <div className="actor-photo">

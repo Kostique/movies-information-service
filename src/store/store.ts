@@ -3,11 +3,13 @@ import MovieReducer from "./reducers/MovieSlice";
 import itemReducer from "./reducers/itemMovieSlice";
 import FilterReducer from "./reducers/FilterSlice";
 import ListReducer from "./reducers/ListSlice";
+import CollectionReducer from "./reducers/CollectionSlice"
 export const rootReducer = combineReducers({
   ListReducer,
   MovieReducer,
   itemReducer,
   FilterReducer,
+  CollectionReducer
 });
 
 export const setupStore = () => {

@@ -26,10 +26,14 @@
     height: 29px;
     opacity: 0.9;
     border-radius: 50%;
-    background: var(--hover-color);
+    background: var(--p-color);
     border: none;
     left: 96.5%;
     cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    &:hover{
+      background-color: var(--hover-color);
+    }
   }
   .dots {
     position: absolute;

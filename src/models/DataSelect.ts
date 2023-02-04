@@ -296,6 +296,7 @@ export const Years = <SelectOptions[]>[
   { value: "2017", body: "2017" },
   { value: "2016", body: "2016" },
   { value: "2015", body: "2015" },
+  { value: "2015-2021", body: "2015-2021" },
   { value: "2010-2014", body: "2010-2014" },
   { value: "2000-2009", body: "2000-2009" },
   { value: "1990-1999", body: "1990-1999" },

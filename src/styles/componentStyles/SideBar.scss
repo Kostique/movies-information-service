@@ -5,17 +5,27 @@
   max-width: 427px;
   height: 1374px;
   &-new__list {
-    background-color: #191a1b;
+    background-color: var(--bg-color);
+    a{
+      text-decoration: none;
+      color: white;
+    }
   }
   &-new__list-item {
+    
+    cursor: pointer;
     display: flex;
     height: 130px;
     border: 1px solid rgba(109, 122, 124, 0.5);
     align-items: center;
     img {
       margin: 0px 15px;
-      width: 92px;
-      height: 98px;
+      width: 64px;
+      height: 96px;
+      border-radius: 5px;
+    }
+    &:hover {
+      background-color: #313232;
     }
   }
   .text {
@@ -39,7 +49,7 @@
     border: 1px solid rgba(109, 122, 124, 0.5);
     line-height: 62px;
     padding-left: 20px;
-    background-color: #212121;
+    background-color: var(--bg-color);
   }
 
 }
@@ -55,17 +65,21 @@
     margin-left: 20px;
   }
   button {
-    background: #81becb;
+    background: var(--p-color);
     color: white;
     border: none;
     margin-left: 20px;
     margin-top: 20px;
     border-radius: 57px;
-    padding: 13px 32px;
+    padding: 10px 32px;
     font-size: 18px;
     width: 148px;
     height: 47px;
     cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    &:hover{
+      background-color: var(--hover-color);
+    }
   }
   &.item-1 {
     background: url("../../img/slider.png");
@@ -80,55 +94,3 @@
     background: url("../../img/slider.png");
   }
 }
-
-// & .sideBar-popular__points{
-//   display: flex;
-//   justify-content: center;
-//   gap: 5px;
-//   margin-top: 20px;
-//   .circle{
-//     border: 1px solid white;
-//     border-radius: 50%;
-//     width: 9px;
-//     height: 9px;
-//   }
-// }
-// & .sideBar-popular__points{
-//   display: flex;
-//   justify-content: center;
-//   gap: 5px;
-//   margin-top: 20px;
-//   .circle{
-//     border: 1px solid white;
-//     border-radius: 50%;
-//     width: 9px;
-//     height: 9px;
-//   }
-// // }
-
-// & .sideBar-popular__poster {
-//   width: 427px;
-//     height: 545px;
-//   img{
-//     position: absolute;
-//     margin: auto 0;
-//     width: 427px;
-//     height: 545px;
-//     z-index: -10;
-//     border: 1px solid rgba(109, 122, 124, 0.5);
-//   }
-//   p{
-//     padding-top: 40%;
-//     padding-left: 20px;
-//     position: relative;
-//     white-space: pre;
-//     font-size: 36px;
-//     line-height: 45px;
-//   }
-//     .sideBar-popular__open-button{
-//       border-radius: 57px;
-//       padding: 13px 32px;
-//       font-size: 18px;
-//       margin: 20px 0px 0px 20px;
-//     }
-// }

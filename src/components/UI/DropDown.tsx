@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react'
+import { useNavigate } from 'react-router-dom';
 interface selectProps {
   options: options[];
   defaultValue: string;
@@ -11,34 +11,21 @@ interface options {
   body: string;
 }
 
-export const DropDown = ({
-  options,
-  defaultValue,
-  value,
-  onChange,
-}: selectProps) => {
+
+export const DropDown = ({options, defaultValue, value, onChange}: selectProps) => {
   return (
     <nav className="dws-menu">
+    <ul>
+      <li className='arrow-hover'><a href="#"><i></i>{defaultValue}<i className="arrow"></i></a>
       <ul>
-        <li className="arrow-hover">
-          <a href="#">
-            <i></i>
-            {defaultValue}
-            <i className="arrow"></i>
-          </a>
-          <ul>
-            {options.map((option: any) => (
-              <li
-                className=""
-                key={option.value}
-                onClick={() => onChange(option.body)}
-              >
-                <a href="#">{option.body}</a>
-              </li>
-            ))}
-          </ul>
+        {options.map((option:any) => 
+        <li className='' key={option.value} onClick={() => onChange(option.body)}>
+             <a href='#'>{option.body}</a>
         </li>
+        )}
       </ul>
-    </nav>
-  );
-};
+      </li>
+    </ul>
+  </nav>
+  )
+}
