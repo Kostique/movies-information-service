@@ -22,8 +22,6 @@ export const MovieItem = () => {
     window.scroll(1, 0);
   }, [id]);
 
-  console.log(item);
-
   return (
     <>
       {isLoading ? (
@@ -72,8 +70,8 @@ export const MovieItem = () => {
                 <h4>О фильме</h4>
                 {item.description}
                 <p>
-                  Год производства:{" "}
-                  <span>{item.year ? ` ${item.year}` : "-"}</span>
+                  Год производства:
+                  <span>{item.year ? ` ${item.year}` : " -"}</span>
                 </p>
                 <p>
                   Страна:
@@ -81,25 +79,24 @@ export const MovieItem = () => {
                     {item.countries
                       ? item.countries.map((el, i) =>
                           i < item.countries.length - 1
-                            ? `${el.name}, `
+                            ? ` ${el.name}, `
                             : ` ${el.name}`
                         )
-                      : "-"}
+                      : " -"}
                   </span>
                 </p>
                 <p>
                   Жанр:
                   <span>
-                    {" "}
                     {item.genres
                       ? item.genres.map((el, i) =>
-                          i < item.genres.length - 1 ? `${el.name}, ` : el.name
+                          i < item.genres.length - 1 ? ` ${el.name}, ` : el.name
                         )
-                      : "-"}
+                      : " -"}
                   </span>
                 </p>
                 <p>
-                  Слоган: <span>{item.slogan ? item.slogan : "-"}</span>
+                  Слоган: <span>{item.slogan ? item.slogan : " -"}</span>
                 </p>
                 <p>
                   Продакшн:
@@ -107,10 +104,10 @@ export const MovieItem = () => {
                     {item.productionCompanies
                       ? item.productionCompanies.map((el, i) =>
                           i < item.productionCompanies.length - 1
-                            ? `${el.name}, `
+                            ? ` ${el.name}, `
                             : ` ${el.name}`
                         )
-                      : "-"}
+                      : " -"}
                   </span>
                 </p>
                 <p>
@@ -118,7 +115,7 @@ export const MovieItem = () => {
                   <span>
                     {item.premiere && item.premiere.world
                       ? ` ${item.premiere.world.slice(0, 10)}`
-                      : "-"}
+                      : " -"}
                   </span>
                 </p>
                 <p>
@@ -128,19 +125,19 @@ export const MovieItem = () => {
                       ? ` ${new Intl.NumberFormat().format(
                           item.fees.world.value
                         )}` + "$"
-                      : "-"}
+                      : " -"}
                   </span>
                 </p>
                 <p>
                   Возраст:
                   <span>
-                    {item.ageRating ? ` ${item.ageRating}` + "+" : "-"}
+                    {item.ageRating ? ` ${item.ageRating}` + "+" : " -"}
                   </span>
                 </p>
                 <p>
                   Длительность:
                   <span>
-                    {item.movieLength ? ` ${item.movieLength} мин.` : "-"}
+                    {item.movieLength ? ` ${item.movieLength} мин.` : " -"}
                   </span>
                 </p>
               </div>

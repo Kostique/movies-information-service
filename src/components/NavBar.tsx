@@ -15,6 +15,7 @@ import {
 import { fetchListMovies } from "../store/reducers/ActionCreators";
 import { listCleaner } from "../store/reducers/ListSlice";
 import { icon404 } from "../img/images";
+import { Spinner } from "./UI/Spinner";
 const selectOptions = [
   { value: "action", body: "Боевик" },
   { value: "millitary", body: "Военный" },
@@ -37,30 +38,52 @@ export const NavBar = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [filter, setFilter] = useState("");
-  const [searchByName, setSearchByName] = useState("");
-
+  const [inputName, setInputName] = useState("");
+  const [empty, setEmpty] = useState(false);
   function resetFilters() {
     dispatch(changeCountry(""));
     dispatch(changeYear(""));
     dispatch(changeGenre(""));
   }
 
-  useEffect(() => {
-    if (!searchByName) {
+  let searchName: string;
+  function onChangeInput(event: string) {
+    searchName = event;
+    if (!event) {
       dispatch(listCleaner());
+      setInputName("");
+      setEmpty(false);
       return;
     }
-    console.log(movies.docs);
-
-    const timeOut = setTimeout(() => {
-      dispatch(fetchListMovies(searchByName));
-    }, 700);
-    return () => clearTimeout(timeOut);
-  }, [searchByName]);
+    processChange();
+  }
+  function handlerInput() {
+    if (searchName) {
+      dispatch(fetchListMovies(searchName));
+      setInputName(searchName);
+    }
+  }
+  function debounce(func: any, timeout = 700) {
+    let timer: any;
+    return (...args: []) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        // @ts-ignore
+        func.apply(this, args);
+      }, timeout);
+    };
+  }
+  const processChange = debounce(() => handlerInput());
 
   useEffect(() => {
-    console.log(location);
+    if (movies.docs.length < 1 && inputName) {
+      setEmpty(true);
+    } else {
+      setEmpty(false);
+    }
+  }, [movies]);
 
+  useEffect(() => {
     if (filter) {
       dispatch(changeGenre(filter));
       navigate(`/movie-list/movie?page=1&sort=votes.imdb&genre=${filter}`);
@@ -157,18 +180,29 @@ export const NavBar = () => {
       <div className="header__input">
         <MyInput
           placeholder="Поиск по сайту"
-          value={searchByName}
-          onChange={setSearchByName}
+          onChange={(e) => onChangeInput(e)}
         />
-
-        {movies.docs.length > 1 && (
+        {empty && (
+          <div className="input-list empty">
+            К сожалению, по вашему запросу ничего не найдено...
+          </div>
+        )}
+        {isLoading && (
+          <div className="input-list spinner">
+            <Spinner />
+          </div>
+        )}
+        {!!movies.docs.length && (
           <ul className="input-list">
             {movies.docs.map((item, index) => (
               <Link
                 to={`/movie-item/${item.id}`}
                 key={index}
                 className="input-item"
-                onClick={() => setSearchByName("")}
+                onClick={() => {
+                  dispatch(listCleaner());
+                  setInputName("");
+                }}
               >
                 <div>
                   <span className="item-icon">

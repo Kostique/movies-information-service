@@ -111,7 +111,7 @@
         &__desc {
           display: flex;
           flex-direction: row;
-          padding: 10px 20px;
+          padding: 10px 10px;
           .desc-headers {
             padding: 0px 15px;
           }
@@ -134,31 +134,45 @@
             color: #a4a4a4;
           }
         }
-        &__rating {
+        &__features {
           display: flex;
-          flex-direction: column;
-          width: 20%;
-          .rating-num {
-            font-size: 18px;
-            color: green;
-            font-weight: 700;
-          }
-          .desc-text {
-            align-self: flex-start;
+          flex-direction: row;
+          align-items: center;
+          .item-rating {
+            color: var(--p-color);
             font-size: 14px;
-            color: #a4a4a4;
-          }
-          & .rating-votes {
-            display: flex;
-            flex-direction: row;
-            span {
-              line-height: 1;
-              padding-left: 5px;
+            align-self: center;
+            justify-self: center;
+            .points {
+              padding-right: 5px;
+              font-size: 24px;
+              font-weight: 700;
+              color: rgb(15, 158, 15);
             }
+          }
+          .btn-favorite {
+            margin-left: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            border: 1px solid var(--p-color);
+            color: white;
+            background-color: transparent;
+            transition: all 0.3s ease-in-out;
             svg {
-              fill: #81becb;
-              width: 15px;
-              height: 15px;
+              fill: white;
+              transition: fill 0.3s ease-in-out;
+            }
+            &:hover {
+              color: var(--hover-color);
+              border-color: var(--hover-color);
+              svg {
+                fill: var(--hover-color);
+              }
             }
           }
         }

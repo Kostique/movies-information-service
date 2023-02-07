@@ -182,7 +182,14 @@ export const MovieList = () => {
                     <div
                       className="item"
                       key={el.id}
-                      onClick={() => navigate(`/movie-item/` + el.id)}
+                      onClick={(e: any) => {
+                        if (
+                          e.target.tagName !== "BUTTON" &&
+                          e.target.tagName !== "svg"
+                        ) {
+                          navigate(`/movie-item/` + el.id);
+                        }
+                      }}
                     >
                       <div className="item__desc">
                         <img
@@ -202,29 +209,22 @@ export const MovieList = () => {
                           </p>
                         </div>
                       </div>
-                      <div className="item__rating">
-                        <p className="imbd">
-                          IMDb:
-                          <span className="rating-num">
-                            {el.rating?.imdb.toFixed(1)}
+                      <div className="item__features">
+                        <p className="item-rating">
+                          <span className="points">
+                            {el.rating.imdb ? el.rating.imdb.toFixed(1) : ""}
                           </span>
+                          {el.votes.imdb
+                            ? " " +
+                              new Intl.NumberFormat().format(el.votes.imdb)
+                            : ""}
                         </p>
-                        <p className="rating-votes desc-text">
-                          <SVGSelector id="voteicon" />
-
-                          <span>{el.votes?.imdb}</span>
-                        </p>
-                        <p className="kp">
-                          MovieDB:{" "}
-                          <span className="rating-num">
-                            {el.rating?.kp.toFixed(1)}
-                          </span>
-                        </p>
-                        <p className="rating-votes desc-text">
-                          <SVGSelector id="voteicon" />
-
-                          <span>{el.votes?.kp}</span>
-                        </p>
+                        <button
+                          className="btn-favorite"
+                          onClick={() => console.log("favorite")}
+                        >
+                          Буду смотреть <SVGSelector id="favorite" />
+                        </button>
                       </div>
                     </div>
                   );

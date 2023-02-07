@@ -2,12 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { MySelect } from "./UI/MySelect";
 import "../styles/componentStyles/Filters.scss";
 import { Genres, Countries, Years } from "../models/DataSelect";
-import {
-  useLocation,
-  useNavigate,
-  useParams,
-  useSearchParams,
-} from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useUrlBuilder } from "../hooks/useUrlBuilder";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import {
@@ -22,15 +17,10 @@ export const Filters = () => {
     (store) => store.FilterReducer
   );
   const dispatch = useAppDispatch();
-  const location = useLocation();
   const navigate = useNavigate();
   const { id } = useParams() as { id: string };
-  const [searchParams] = useSearchParams();
-
   const filters = useRef<HTMLDivElement>(null);
   const [filtersCoord, setCoords] = useState(162);
-
-  const currentPage: number = Number(searchParams.get("page"));
   const { queryParams, countryOld, yearOld, genreOld, sortOld } =
     useUrlBuilder();
 
@@ -52,12 +42,6 @@ export const Filters = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  useLayoutEffect(() => {
-    if (location.search != `?page=${currentPage}${queryParams}`) {
-      navigate(`/movie-list/${id}?page=${currentPage}${queryParams}`);
-    }
-  }, [currentPage]);
 
   useLayoutEffect(() => {
     if (firstUpdate.current) {
