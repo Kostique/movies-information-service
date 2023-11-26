@@ -1,0 +1,47 @@
+.user-profile {
+  width: 1342px;
+  background-color: var(--bg-color);
+  margin-right: 30px;
+  border: var(--border);
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    button {
+      margin-left: 20px;
+    }
+    span {
+      padding: 20px;
+      border: 1px solid rgba(109, 122, 124, 0.5);
+      border-right: none;
+      border-top: none;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      &:first-child {
+        border-bottom-left-radius: 10px;
+      }
+      &:hover {
+        color: var(--hover-color);
+        background-color: rgba(109, 122, 124, 0.1);
+      }
+    }
+  }
+  &__main {
+    display: flex;
+    margin: 20px;
+    .user-info {
+      text-align: center;
+      img {
+        width: 350px;
+        height: 450px;
+      }
+      h4 {
+        font-size: 24px;
+      }
+    }
+  }
+}

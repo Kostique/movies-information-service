@@ -1,0 +1,102 @@
+.actor-profile {
+  width: 1342px;
+  height: fit-content;
+  min-height: 1400px;
+  background-color: #191a1b;
+  border: 1px solid rgba(109, 122, 124, 0.5);
+  margin-right: 30px;
+  padding: 20px 20px;
+  font-size: 24px;
+  span {
+    color: white;
+  }
+  p {
+    color: var(--p-color);
+  }
+  &__container {
+    display: flex;
+    flex-direction: row;
+  }
+  &__photo {
+    padding-top: 5px;
+    img {
+      padding-top: 15px;
+      height: 620px;
+      width: 420px;
+    }
+    padding-right: 40px;
+  }
+  &__description {
+    padding-top: 40px;
+    h4 {
+      color: var(--hover-color);
+      font-size: 48px;
+    }
+    svg {
+      padding-left: 10px;
+      width: 40px;
+    }
+  }
+  &__info {
+    padding-top: 30px;
+    h4 {
+      font-size: 32px;
+    }
+    .movie-item__facts {
+      h4 {
+        padding-top: 30px;
+      }
+      div {
+        .fact-number {
+          color: var(--p-color);
+        }
+      }
+    }
+  }
+  &__movies {
+    h5 {
+      font-size: 32px;
+      text-align: center;
+      color: var(--hover-color);
+    }
+    .item {
+      cursor: pointer;
+      height: 180px;
+      padding: 40px;
+      justify-content: space-between;
+      display: flex;
+      flex-direction: row;
+      border-top: 1px solid rgba(125, 122, 122, 0.5);
+      &:first-child {
+        border-top: none;
+      }
+      &__desc {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        width: 50%;
+        h4 {
+          font-size: 40px;
+          color: var(--hover-color);
+        }
+        span {
+          font-size: 28px;
+          color: var(--p-color);
+        }
+      }
+      &__rating {
+        display: flex;
+        align-items: center;
+        span {
+          padding-right: 45px;
+        }
+        .green {
+          color: rgb(21, 194, 21);
+        }
+        .gray {
+          color: rgb(167, 65, 65);
+        }
+      }
+    }
+  }
+}
